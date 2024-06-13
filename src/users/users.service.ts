@@ -16,8 +16,12 @@ export class UsersService {
     return `This action returns all users`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOneById(id: string) {
+    return await this.userModel.findOne<User>({ where: { userId: id } });
+  }
+
+  async findOneByEmail(email: string) {
+    return await this.userModel.findOne<User>({ where: { email: email } });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

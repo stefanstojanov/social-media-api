@@ -1,4 +1,5 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { UUIDV4 } from 'sequelize';
+import { Table, Column, Model, DataType, Index } from 'sequelize-typescript';
 
 enum Role {
   USER = 'user',
@@ -7,6 +8,15 @@ enum Role {
 
 @Table
 export class User extends Model<User> {
+  @Column({
+    type: DataType.UUID,
+    unique: true,
+    allowNull: false,
+    primaryKey: true,
+    defaultValue: UUIDV4,
+  })
+  @Index({ name: 'userId_index' })
+  userId: string;
   @Column({
     type: DataType.STRING,
     allowNull: false,
