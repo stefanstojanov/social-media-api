@@ -9,7 +9,7 @@ async function bootstrap() {
     .setTitle('Social media')
     .setDescription('Social media API Documentation')
     .setVersion('1.0')
-    .addTag('social-media')
+    .addTag('social-media-api')
     .addBearerAuth()
     .build();
 
